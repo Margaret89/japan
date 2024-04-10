@@ -1,0 +1,33 @@
+/* PloniMLv2AAA */
+@font-face {
+	font-family: 'PloniMLv2AAA';
+	src: url('#{$path-fonts}/ploni/plonimlv2aaa-regular.eot'); /* IE 9 Compatibility Mode */
+	src: local('PloniMLv2AAA Regular'), local('PloniMLv2AAA-Regular'),
+		url('#{$path-fonts}/ploni/plonimlv2aaa-regular.woff2') format('woff2'), /* Super Modern Browsers */
+		url('#{$path-fonts}/ploni/plonimlv2aaa-regular.woff') format('woff');
+	font-weight: 400;
+	font-style: normal;
+	font-display: swap;
+}
+
+@font-face {
+	font-family: 'PloniMLv2AAA';
+	src: url('#{$path-fonts}/ploni/plonimlv2aaa-bold.eot'); /* IE 9 Compatibility Mode */
+	src: local('PloniMLv2AAA Bold'), local('PloniMLv2AAA-Bold'),
+		url('#{$path-fonts}/ploni/plonimlv2aaa-bold.woff2') format('woff2'), /* Super Modern Browsers */
+		url('#{$path-fonts}/ploni/plonimlv2aaa-bold.woff') format('woff');
+	font-weight: 700;
+	font-style: normal;
+	font-display: swap;
+}
+
+@font-face {
+	font-family: 'PloniMLv2AAA';
+	src: url('#{$path-fonts}/ploni/plonimlv2aaa-black.eot'); /* IE 9 Compatibility Mode */
+	src: local('PloniMLv2AAA Black'), local('PloniMLv2AAA-Black'),
+		url('#{$path-fonts}/ploni/plonimlv2aaa-black.woff2') format('woff2'), /* Super Modern Browsers */
+		url('#{$path-fonts}/ploni/plonimlv2aaa-black.woff') format('woff');
+	font-weight: 900;
+	font-style: normal;
+	font-display: swap;
+}

@@ -1,0 +1,141 @@
+:root{
+	--font-site: 'PloniMLv2AAA', Arial, sans-serif;
+	--color-primary: #D3AE6E;
+	// --color-primary-hover: #c56205;
+	// --color-primary-disable: rgba(255, 122, 0, 0.18);
+	--color-text: #fff;
+	--color-bg: #000;
+}
+
+
+html,
+body{
+	background: #000;
+	font-family: var(--font-site);
+	@include font(normal, normal, 10px, 1.5, var(--color-text));
+	box-sizing: border-box;
+}
+
+body{font-size: 2.2rem;}
+
+*,
+*:before,
+*:after {
+	box-sizing: inherit;
+	font-size: inherit;
+	font-family: inherit;
+}
+
+
+::-webkit-scrollbar-button {
+	width:8px;
+	height:0px
+}
+
+::-webkit-scrollbar-thumb {
+	border-radius: 4px;
+	background-color: grey;
+}
+
+::-webkit-scrollbar-track{background-color:#dedede}
+::-webkit-scrollbar{width: 8px; height: 8px;}
+
+img{max-width: 100%;}
+
+a{color: var(--color-primary);}
+a:hover{text-decoration: none;}
+
+p{
+	padding: 0;
+	margin-bottom: 2rem;
+}
+
+h1,.h1,
+h2,.h2,
+h3,.h3,
+h4,.h4,
+h5,.h5
+{
+	line-height: 1.4;
+	font-weight: 900;
+	color: var(--color-text);
+}
+
+h1,.h1{
+	font-size: 4.7rem;
+	margin-bottom: 5rem;
+}
+
+h2,.h2{
+	font-size: 4rem;
+	margin-bottom: 5rem;
+}
+
+h3,.h3{
+	font-size: 3.6rem;
+	margin-bottom: 4rem;
+}
+
+h4,.h4{
+	font-size: 3rem;
+	margin-bottom: 3rem;
+}
+
+h5,.h5{
+	font-size: 2.4rem;
+	margin-bottom: 2rem;
+}
+
+.wrapper{
+	display: flex;
+	flex-direction: column;
+	width: 100vw;
+	height: 100vh;
+	overflow: hidden;
+
+	&_white{
+		background: #fff;
+		--color-text: #000;
+	}
+}
+
+main{
+	height: 100%;
+	overflow: hidden;
+}
+
+.btn,
+input[type="submit"].btn,
+button.btn{
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	gap: 10px;
+	height: 4.8rem;
+	background: linear-gradient(to right, rgba(242,224,121,1) 0%, rgba(211,174,110,1) 100%);
+	border: none;
+	border-radius: 8px;
+	outline: none;
+	@include font(normal, 600, 2rem, 1.2, #fff);
+	text-decoration: none;
+	text-align: center;
+	padding: 0 20px;
+	cursor: pointer;
+	transition: all 0.2s ease 0s;
+
+	.icon{
+		flex-shrink: 0;
+		fill: #fff;
+		transition: fill 0.2s ease 0s;
+	}
+
+	&:hover{
+		color: #fff;
+		background-position: right center;
+	}
+	
+	&.disable{
+		opacity: 0.2;
+		cursor: auto;
+	}
+}

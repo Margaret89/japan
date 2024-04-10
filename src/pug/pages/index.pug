@@ -1,0 +1,22 @@
+extends ../layout/main
+
+block variables
+	- var title = 'Content';
+	- 
+		var pagelist = [
+			{href: 'main.html',name:'Main'},
+			{href: 'tipografika.html',name:'Typography'},
+		];
+
+block content
+	section
+		.container
+			.row
+				.col-12
+					h1 Content
+					ul
+						each page in pagelist
+							li
+								a(href=page.href,)= page.name
+
+
