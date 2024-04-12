@@ -1,0 +1,142 @@
+/*-------------- form-pic -----------------*/
+.form-pic{
+	width: 460px;
+	max-width: 100%;
+	margin: 0 auto;
+
+	h1, .h1{
+		text-align: center;
+		margin-bottom: 16rem;
+	}
+
+	&__or{
+		@include font(none, 300, 1.5rem, 1.2, var(--color-text));
+		text-align: center;
+		margin: 55px 0;
+	}
+
+	&__bottom{
+		.btn{width: 100%;}
+	}
+
+	&__note{
+		@include font(none, 600, 1.5rem, 1.2, var(--color-text));
+		text-decoration: underline;
+		text-align: center;
+		margin-top: 22px;
+	}
+}
+
+.choose-pic{
+	padding-bottom: 71.8%;
+	background: #121212;
+	border-radius: 33px;
+	overflow: hidden;
+	position: relative;
+
+	&__content{
+		width: 100%;
+		height: 100%;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		flex-direction: column;
+		gap: 30px;
+		background-repeat: no-repeat;
+		background-position: center;
+		background-size: cover;
+		position: absolute;
+		top: 0;
+		left: 0;
+	}
+
+	&__btn{
+		display: inline-flex;
+		align-items: center;
+		justify-content: center;
+		width: 196px;
+		height: 196px;
+		border-radius: 50%;
+		background: var(--color-primary);
+		cursor: pointer;
+		transition: transform 0.2s ease 0s;
+
+		.icon{fill: #fff;}
+
+		&:hover{transform: scale(0.9);}
+	}
+
+	&__label{
+		display: inline-flex;
+		gap: 5px;
+		@include font(none, 600, 1.5rem, 1.2, var(--color-text));
+
+		.icon{fill: var(--color-text);}
+	}
+
+	&__del{
+		display: inline-flex;
+		align-items: center;
+		justify-content: center;
+		width: 68px;
+		height: 68px;
+		border-radius: 23px;
+		background: #FF4762;
+		transition: transform 0.2s ease 0s;
+		cursor: pointer;
+
+		.icon{fill: #fff;}
+
+		&:hover{transform: scale(0.9);}
+	}
+}
+
+.wrapper_light{
+	.choose-pic{background: #f8f8f8;}
+}
+
+@media (max-width: 767px) {
+	.form-pic{
+		&__wrap{
+			display: flex;
+			flex-direction: column;
+			min-height: 508px;
+		}
+
+		h1, .h1{
+			text-align: initial;
+			margin-bottom: 4rem;
+		}
+
+		&__or{display: none;}
+		&__bottom{margin-top: auto;}
+		&__note{margin-top: 30px;}
+	}
+
+	.choose-pic{
+		margin-bottom: 40px;
+
+		&__btn{
+			width: 140px;
+			height: 140px;
+
+			.icon{
+				max-width: 62px;
+				max-height: 55px;
+			}
+		}
+
+		&__label{display: none;}
+
+		&__del{
+			width: 48px;
+			height: 48px;
+			border-radius: 18px;
+			
+			.icon{
+				max-width: 24px;
+				max-height: 24px;
+			}
+		}
+	}
+}

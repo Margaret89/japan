@@ -1,7 +1,7 @@
 extends ../layout/main
 
 block variables
-	- var title = 'Типографика';
+	- var title = 'Typography';
 
 block content
 	section(style="padding: 20px")
@@ -39,6 +39,9 @@ block content
 		br
 		br
 		a.btn.btn_disable(href='#') Button
+		br
+		br
+		a.btn.btn_border(href='#') Button
 
 		br
 		br
@@ -127,3 +130,18 @@ block content
 				.type-icon__img
 					+svg('ic-next','ic-next', '49', '49')
 				.type-icon__name ic-next
+
+			.type-icon__item
+				.type-icon__img
+					+svg('ic-photo','ic-photo', '48', '44')
+				.type-icon__name ic-photo
+
+			.type-icon__item
+				.type-icon__img
+					+svg('ic-cursor','ic-cursor', '17', '17')
+				.type-icon__name ic-cursor
+
+			.type-icon__item
+				.type-icon__img
+					+svg('ic-bin','ic-bin', '17', '17')
+				.type-icon__name ic-bin

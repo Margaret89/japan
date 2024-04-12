@@ -1,6 +1,16 @@
 /* PloniMLv2AAA */
 @font-face {
 	font-family: 'PloniMLv2AAA';
+	src: local('PloniMLv2AAA Light'), local('PloniMLv2AAA-Light'),
+		url('#{$path-fonts}/ploni/plonimlv2aaa-light.woff2') format('woff2'), /* Super Modern Browsers */
+		url('#{$path-fonts}/ploni/plonimlv2aaa-light.woff') format('woff');
+	font-weight: 300;
+	font-style: normal;
+	font-display: swap;
+}
+
+@font-face {
+	font-family: 'PloniMLv2AAA';
 	src: local('PloniMLv2AAA Regular'), local('PloniMLv2AAA-Regular'),
 		url('#{$path-fonts}/ploni/plonimlv2aaa-regular.woff2') format('woff2'), /* Super Modern Browsers */
 		url('#{$path-fonts}/ploni/plonimlv2aaa-regular.woff') format('woff');
