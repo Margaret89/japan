@@ -127,7 +127,8 @@ button.btn{
 		background-position: right center;
 	}
 	
-	&.disable{
+	&.disable,
+	&[disabled]{
 		opacity: 0.2;
 		cursor: auto;
 	}

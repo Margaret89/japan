@@ -1,0 +1,100 @@
+extends ../layout/main
+
+block variables
+	- var title = 'landing-validated';
+
+block content
+	.wrap-landing
+		.landing-info
+			.landing-info__logo
+				img(src="assets/img/logo.png", alt="")
+			
+			.landing-info__text
+				h2 קצת עלינו
+
+				p כמו כל רשת, התחלנו בקטן<span class="space"></span>. פתחנו את הסניף הראשון שלנו בירושלים<span class="space"></span>, אי-שם בשנת 2004, במטרה להביא את המטבח האסייתי המהיר והכשר אל קדמת הבמה.
+				p היום<span class="space"></span>, עם 16 סניפים ברחבי הארץ ועוד מסעדות חדשות אשר עושות את דרכן לפתיחה, אנחנו יכולים להגיד שאנחנו בדרך הנכונה.
+				p נעים מאוד - JAPAN JAPAN – ווק אנד סושי
+				p רשת מסעדות כשרה על טהרת התפריט האסייתי – יפני-סיני-תאילנדי  עם השפעות ממטבחים נוספים מהמזרח הרחוק. יותר מ-80 מנות שעושות כבוד למקור, מחומרי הגלם היקרים והאיכותיים ביותר בייבוא מיוחד ובהכנה במקום מהנודלס ועד הרטבים המיוחדים.
+				p וכן, הכול טרי. תמיד.
+				p סיירת הסושימנים וצוות הטבחים שלנו מחכים להזמנה שלכם מהמטבח לשולחן,עם שליח לבית ולמשרד או באיסוף עצמי.האתר והאפליקציה שלנו שם בדיוק בשביל זה, איך שנוח לכם.המנות ימצאו
+					br
+					| את דרכן אליכם.
+
+
+			.social
+				.social__item
+					+svg('ic-business','ic-business', '26', '26')
+					
+				.social__item
+					+svg('ic-instagram','ic-instagram', '26', '26')
+					
+				.social__item
+					+svg('ic-bookmark','ic-bookmark', '26', '26')
+
+				.social__item
+					+svg('ic-facebook','ic-facebook', '26', '26')
+
+				.social__item
+					+svg('ic-youtube','ic-youtube', '26', '26')
+
+		.wrap-landing__main
+			.form-landing
+				h1 אז את מי מפנקים היום?
+					img(src="assets/img/smile-like.png", alt="")
+
+				.form-landing__wrap
+					.form-landing__content
+						.form-landing__item
+							.form-landing__label שם מלא
+							.form-landing__field
+								input(type="text", value="עידן בן יהודה")
+
+						.form-landing__item
+							//- .form-landing__label טלפון
+							.form-landing__field.form-landing__field_complex
+								input(type="text", value="טלפון")
+
+								.form-landing__radio-wrap
+									label.input-radio
+										input(type='radio', name="radio")
+										span.input-radio__mark
+										span.input-radio__text טלפון
+
+									label.input-radio
+										input(type='radio', name="radio")
+										span.input-radio__mark
+										span.input-radio__text אימייל
+
+						.form-landing__item
+							//- .form-landing__label סכום לפינוק
+							.form-landing__field
+								input(type="text", value="סכום לפינוק")
+
+						.form-landing-choose-list
+							.form-landing-choose
+								.form-landing-choose__icon
+									+svg('ic-gift','ic-gift', '48', '48')
+
+								.form-landing-choose__label כרטיס מתנה
+
+							.form-landing-choose
+								.form-landing-choose__icon
+									+svg('ic-credit-card','ic-credit-card', '43', '35')
+
+								.form-landing-choose__label כרטיס נטען
+
+					.form-landing__bottom
+						.form-landing__polit
+							label.input-check
+								input(type='checkbox')
+								span.input-check__mark
+									+svg('ic-tick','ic-tick', '8', '6')
+								span.input-check__text קראתי ואני מאשר את 
+									a(href="#") תנאי השימוש
+
+
+						input.btn(type="sumbit", value="המשך", disabled="disabled")
+
+		.wrap-landing__logo
+			img(src="assets/img/atmos.svg", alt="")
