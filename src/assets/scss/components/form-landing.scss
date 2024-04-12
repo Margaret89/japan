@@ -22,7 +22,7 @@
 	&__item{margin-bottom: 33px;}
 
 	&__label{
-		@include font(none, 600, 1.4rem, 1.4, none);
+		@include font(none, 600, 1.4rem, 1.4, var(--color-text));
 		margin-bottom: -11px;
 	}
 
@@ -141,7 +141,10 @@
 		justify-content: center;
 		height: 48px;
 
-		.icon{max-height: 100%;}
+		.icon{
+			max-height: 100%;
+			transition: fill 0.2s ease 0s;
+		}
 	}
 
 	&__label{
@@ -154,6 +157,19 @@
 	}
 
 	&.active{cursor: auto;}
+}
+
+.wrapper_light{
+	.form-landing-choose{
+		background: #F8F8F8;
+
+		&:hover,
+		&.active{
+			background: #FFA600;
+
+			.icon{fill: #fff;}
+		}
+	}
 }
 
 @media (max-width: 767px) {

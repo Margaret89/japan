@@ -1,9 +1,23 @@
 @mixin font($font-style, $font-weight, $font-size, $line-height, $font-color) {
-	font-style: $font-style;
-	font-weight: $font-weight;
-	font-size: $font-size;
-	line-height: $line-height;
-	color: $font-color;
+	@if $font-style != none {
+		font-style: $font-style;
+	}
+	
+	@if $font-weight != none {
+		font-weight: $font-weight;
+	}
+
+	@if $font-size != none {
+		font-size: $font-size;
+	}
+
+	@if $line-height != none {
+		line-height: $line-height;
+	}
+
+	@if $font-color != none {
+		color: $font-color;
+	}
 }
 
 @mixin top-center {

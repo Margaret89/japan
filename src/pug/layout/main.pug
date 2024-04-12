@@ -9,6 +9,6 @@ html(lang='he', dir="rtl")
 		title #{title}
 
 	body
-		.wrapper
+		.wrapper(class=light?'wrapper_light':'')
 			main.main
 				block content

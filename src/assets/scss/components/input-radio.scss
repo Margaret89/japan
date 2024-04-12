@@ -3,7 +3,7 @@
 	display: inline-flex;
 	align-items: center;
 	gap: 12px;
-	@include font(none, 600, 1.4rem, 1.4, none);
+	@include font(none, 600, 1.4rem, 1.4, var(--color-text));
 	margin: 0;
 	position: relative;
 	cursor: pointer;

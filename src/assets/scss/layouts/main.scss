@@ -10,7 +10,7 @@
 
 html,
 body{
-	background: #000;
+	background: #fff;
 	font-family: var(--font-site);
 	@include font(normal, normal, 10px, 1.45, var(--color-text));
 	box-sizing: border-box;
@@ -90,19 +90,6 @@ h5,.h5{
 	margin-bottom: 2rem;
 }
 
-.wrapper{
-	display: flex;
-	flex-direction: column;
-	width: 100%;
-	height: 100vh;
-	overflow: hidden;
-
-	&_white{
-		background: #fff;
-		--color-text: #000;
-	}
-}
-
 main{
 	height: 100%;
 	overflow-y: auto;
@@ -149,6 +136,31 @@ button.btn{
 	display: inline-block;
 	width: 2px;
 	white-space: nowrap;
+}
+
+.wrapper{
+	display: flex;
+	flex-direction: column;
+	width: 100%;
+	height: 100vh;
+	overflow: hidden;
+	background: var(--color-bg);
+
+	&_light{
+		--color-primary: #C6102E;
+		--color-text: #000;
+		--color-bg: #fff;
+
+		.btn,
+		input[type="submit"].btn,
+		button.btn{
+			background: linear-gradient(to right, rgba(198, 16, 46,1) 0%, rgb(160, 12, 37) 50%, rgba(198, 16, 46,1) 100%);
+			background-size: 200% auto;
+
+			&:hover{background-position: right center;}
+		}
+
+	}
 }
 
 @media (max-width: 767px) {
