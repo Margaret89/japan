@@ -4,20 +4,10 @@
 	vertical-align: middle;
 	max-width: 100%;
 	max-height: 100%;
-	fill: #404040;
-
-	&.ic-white{
-		fill: #fff;
-	}
+	fill: var(--color-text);
 
 	&.ic-stroke{
-		stroke: $color-text;
+		stroke: var(--color-text);
 		fill: transparent;
 	}
-
-	// &.ic-outgoing-call{fill: $color-orange;}
-	// &.ic-incoming-call{fill: #48B26B;}
-	// &.ic-missed-call{fill: $color-red;}
-
-	// &.ic-reset-grey{fill: #ececec;}
 }

@@ -4,7 +4,7 @@ block variables
 	- var title = 'Типографика';
 
 block content
-	section
+	section(style="padding: 20px")
 		p
 			a(href='#') This is a standard link
 
@@ -42,9 +42,63 @@ block content
 
 		br
 		br
+		br
+		.h2 checkbox
+		label.input-check
+			input(type='checkbox')
+			span.input-check__mark
+				+svg('ic-tick','ic-tick', '8', '6')
+			span.input-check__text Text
+
+		br
+		br
+		br
+		.h2 radio
+		label.input-radio
+			input(type='radio', name="radio")
+			span.input-radio__mark
+			span.input-radio__text Text
+
+		br
+		br
 		div.h2 Иконки
 		.type-icon
 			.type-icon__item
 				.type-icon__img
-					+svg('ic-twitter','ic-twitter', '17', '14')
-				.type-icon__name ic-twitter
+					+svg('ic-business','ic-business', '26', '26')
+				.type-icon__name ic-business
+
+			.type-icon__item
+				.type-icon__img
+					+svg('ic-instagram','ic-instagram', '26', '26')
+				.type-icon__name ic-instagram
+
+			.type-icon__item
+				.type-icon__img
+					+svg('ic-bookmark','ic-bookmark', '26', '26')
+				.type-icon__name ic-bookmark
+
+			.type-icon__item
+				.type-icon__img
+					+svg('ic-facebook','ic-facebook', '26', '26')
+				.type-icon__name ic-facebook
+
+			.type-icon__item
+				.type-icon__img
+					+svg('ic-youtube','ic-youtube', '26', '26')
+				.type-icon__name ic-youtube
+
+			.type-icon__item
+				.type-icon__img
+					+svg('ic-gift','ic-gift', '26', '26')
+				.type-icon__name ic-gift
+
+			.type-icon__item
+				.type-icon__img
+					+svg('ic-credit-card','ic-credit-card', '43', '35')
+				.type-icon__name ic-credit-card
+
+			.type-icon__item
+				.type-icon__img
+					+svg('ic-tick','ic-tick', '8', '6')
+				.type-icon__name ic-tick
