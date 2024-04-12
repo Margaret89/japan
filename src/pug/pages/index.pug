@@ -9,6 +9,8 @@ block variables
 			{href: 'terms.html',name:'Terms'},
 			{href: 'landing.html',name:'Landing'},
 			{href: 'landing2.html',name:'Landing 2'},
+			{href: 'celebration-type.html',name:'Celebration Type'},
+			{href: 'celebration-type-validated.html',name:'Celebration Type - Validatede'},
 			{href: 'tipografika.html',name:'Typography'},
 		];
 
@@ -18,6 +20,6 @@ block content
 		ul
 			each page in pagelist
 				li
-					a(href=page.href,)= page.name
+					a(href=page.href, target="_blank")= page.name
 
 

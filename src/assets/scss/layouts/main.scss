@@ -5,6 +5,7 @@
 	// --color-primary-disable: rgba(255, 122, 0, 0.18);
 	--color-text: #fff;
 	--color-bg: #000;
+	--color-danger: #E05353;
 }
 
 
@@ -134,10 +135,34 @@ button.btn{
 	}
 }
 
+.btn-back{
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	gap: 3px;
+	height: 5.6rem;
+	background: #292D32;
+	border: none;
+	border-radius: 2.8rem;
+	outline: none;
+	@include font(normal, 600, 1.5rem, 1.2, #fff);
+	text-decoration: none;
+	text-align: center;
+	padding: 0 30px;
+	cursor: pointer;
+	transition: all 0.2s ease 0s;
+
+	&:hover{background: var(--color-primary);}
+}
+
 .space{
 	display: inline-block;
 	width: 2px;
 	white-space: nowrap;
+}
+
+html[dir="rtl"]{
+	.ic-arrow-left{transform: rotate(180deg);}
 }
 
 .wrapper{
@@ -162,6 +187,19 @@ button.btn{
 			&:hover{background-position: right center;}
 		}
 
+		.btn-back{
+			background: #F8F8F8;
+			color: #000;
+
+			.icon{transition: all 0.2s ease 0s;}
+
+			&:hover{
+				background: var(--color-primary);
+				color: #fff;
+
+				.icon{fill: #fff;}
+			}
+		}
 	}
 }
 
@@ -179,6 +217,17 @@ button.btn{
 	h2,.h2{
 		font-size: 4rem;
 		margin-bottom: 2rem;
+	}
+
+	.btn-back{
+		height: 4.2rem;
+		border-radius: 2.8rem;
+		font-size: 1.1rem;
+
+		.icon{
+			width: 10px;
+			height: 10px;
+		}
 	}
 	
 	// h3,.h3{

@@ -14,11 +14,15 @@
 	}
 
 	&__wrap{
+		display: flex;
+		flex-direction: column;
 		width: 464px;
 		max-width: 100%;
+		min-height: 555px;
 		margin: 0 auto;
 	}
 
+	&__content{margin-bottom: 42px;}
 	&__item{margin-bottom: 33px;}
 
 	&__label{
@@ -104,7 +108,7 @@
 	}
 
 	&__bottom{
-		margin-top: 42px;
+		margin-top: auto;
 		.btn{width: 100%;}
 	}
 
@@ -172,6 +176,206 @@
 	}
 }
 
+.select{
+	position: relative;
+
+	&__top{
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+		gap: 20px;
+		height: 4.8rem;
+		border-bottom: 1px solid var(--color-text);
+		padding: 0 20px;
+		transition: border-color 0.2s ease 0s;
+		cursor: pointer;
+	}
+
+	&__def{
+		font-size: 1.6rem;
+		line-height: 1.2;
+		color: #3D4043;
+	}
+
+	&__val{
+		font-size: 1.6rem;
+		line-height: 1.2;
+		color: var(--color-text);
+	}
+
+	&__popup{
+		width: 100%;
+		padding-top: 30px;
+		position: absolute;
+		top: 100%;
+		left: 0;
+	}
+
+	&__popup-top{
+		display: flex;
+		justify-content: space-between;
+		gap: 10px;
+		margin-bottom: 10px;
+	}
+
+	&__title{
+		@include font(none, none600, 1.6rem, 1.2, var(--color-text));
+	}
+
+	&__link{
+		@include font(none, none, 1.4rem, 1.2, var(--color-danger));
+		text-decoration: underline;
+		cursor: pointer;
+
+		&:hover{text-decoration: none;}
+	}
+
+	&__list{
+		max-height: 300px;
+		background: #121212;
+		border-bottom: 1px solid var(--color-text);
+		padding: 20px 24px;
+		overflow-y: auto
+	}
+
+	&__item{
+		@include font(none, none, 1.6rem, 1.4, var(--color-text));
+	}
+
+	&__label{
+		@include font(none, 600, 1.4rem, 1.4, var(--color-text));
+		margin-bottom: -11px;
+	}
+
+	&__field{
+		margin-top: 47px;
+
+		input[type="text"],
+		input[type="email"],
+		input[type="number"],
+		input[type="password"],
+		input[type="time"],
+		input[type="date"],
+		textarea{
+			display: flex;
+			align-items: center;
+			height: 4.8rem;
+			width: 100%;
+			font-family: var(--font-site);
+			@include font(normal, normal, 1.8rem, 1, var(--color-text));
+			padding: 0;
+			border-radius: 0;
+			border: 0;
+			border-bottom: 1px solid var(--color-text);
+			outline: 0;
+			margin: 0;
+			background: transparent;
+			box-shadow: none;
+			transition: border 0.2s ease 0s;
+		}
+	
+		input[type="text"]:focus,
+		input[type="number"]:focus,
+		input[type="email"]:focus,
+		input[type="password"]:focus,
+		input[type="time"]:focus,
+		input[type="date"]:focus,
+		textarea:focus{
+			border-color: var(--color-primary);
+		}
+	
+		&__item.error{
+			input[type="text"],
+			input[type="number"],
+			input[type="email"],
+			input[type="password"],
+			input[type="time"],
+			input[type="date"],
+			textarea{
+				border-color: var(--color-danger);
+			}
+	
+			input[type="text"]::placeholder,
+			input[type="number"]::placeholder,
+			input[type="email"]::placeholder,
+			input[type="password"]::placeholder,
+			input[type="time"]::placeholder,
+			input[type="date"]::placeholder,
+			textarea::placeholder{
+				color: var(--color-danger);
+			}
+		}
+	}
+
+	&__next,
+	&__prev{
+		position: absolute;
+		top: 50%;
+		transform: translateY(-50%);
+		cursor: pointer;
+
+		.icon{
+			fill: var(--color-text);
+			transition: all 0.2s ease 0s;
+		}
+
+		&:hover .icon{fill: var(--color-primary);}
+
+		&.disable{cursor: auto;}
+
+		&.disable .icon,
+		&.disable:hover .icon{
+			fill: #333A43;
+		}
+	}
+
+	&__prev{left: -68px;}
+	&__next{right: -68px;}
+}
+
+html[dir="rtl"]{
+	.select{
+		&__next,
+		&__prev{
+			.icon{transform: rotate(180deg);}
+		}
+
+		&__prev{
+			left: auto;
+			right: -68px;
+		}
+
+		&__next{
+			right: auto;
+			left: -68px;
+		}
+	}
+}
+
+
+.wrapper_light{
+	.select{
+		&__def{color: #ccc;}
+		&__list{background: #f8f8f8;}
+
+		&__next,
+		&__prev{
+			.icon{fill: var(--color-primary);}
+			&:hover{opacity: 0.6;}
+
+			&.disable .icon,
+			&.disable:hover .icon{
+				fill: var(--color-primary);
+			}
+
+			&.disable,
+			&.disable:hover{
+				opacity: 0.4;
+			}
+		}
+	}
+}
+
 @media (max-width: 767px) {
 	.form-landing{
 		h1, .h1{
@@ -197,6 +401,35 @@
 			height: 40px;
 
 			.ic-credit-card{max-width: 35px;}
+		}
+	}
+
+	.select{
+		&__prev,
+		&__next{
+			.icon{
+				width: 28px;
+				height: 28px;
+			}
+		}
+
+		&__prev{left: -14px;}
+		&__next{right: -14px;}
+		&__field{margin-top: 30px;}
+	}
+
+	
+	html[dir="rtl"]{
+		.select{
+			&__prev{
+				left: auto;
+				right: -14px;
+			}
+
+			&__next{
+				right: auto;
+				left: -14px;
+			}
 		}
 	}
 }

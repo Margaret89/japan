@@ -6,7 +6,8 @@
 
 	&__main{
 		display: flex;
-		justify-content: center;
+		align-items: center;
+		flex-direction: column;
 		width: 100%;
 		padding: 105px 40px;
 		position: relative;
@@ -17,6 +18,12 @@
 		bottom: 40px;
 		right: 57px;
 	}
+
+	.btn-back{
+		position: absolute;
+		top: 50px;
+		left: 48px;
+	}
 }
 
 html[dir="rtl"]{
@@ -25,6 +32,11 @@ html[dir="rtl"]{
 			right: auto;
 			left: 57px;
 		}
+	}
+
+	.btn-back{
+		left: auto;
+		right: 48px;
 	}
 }
 
@@ -43,14 +55,19 @@ html[dir="rtl"]{
 
 		&__main{width: 100%;}
 		&__logo{bottom: 20px;}
+
+		.btn-back{
+			position: static;
+			align-self: flex-start;
+		}
 	}
 }
 
 @media (max-width: 767px) {
 	.wrap-landing{
 		&__main{padding: 40px 30px;}
-
 		&__logo{right: 30px;}
+		.btn-back{margin-bottom: 30px;}
 	}
 
 	html[dir="rtl"]{

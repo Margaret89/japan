@@ -1,0 +1,91 @@
+extends ../layout/main
+
+block variables
+	- var title = 'landing-validated';
+
+block content
+	.wrap-landing
+		.landing-info
+			.landing-info__logo
+				img(src="assets/img/logo.png", alt="")
+			
+			.landing-info__text
+				h2 קצת עלינו
+
+				p כמו כל רשת, התחלנו בקטן<span class="space"></span>. פתחנו את הסניף הראשון שלנו בירושלים<span class="space"></span>, אי-שם בשנת 2004, במטרה להביא את המטבח האסייתי המהיר והכשר אל קדמת הבמה.
+				p היום<span class="space"></span>, עם 16 סניפים ברחבי הארץ ועוד מסעדות חדשות אשר עושות את דרכן לפתיחה, אנחנו יכולים להגיד שאנחנו בדרך הנכונה.
+				p נעים מאוד - JAPAN JAPAN – ווק אנד סושי
+				p רשת מסעדות כשרה על טהרת התפריט האסייתי – יפני-סיני-תאילנדי  עם השפעות ממטבחים נוספים מהמזרח הרחוק. יותר מ-80 מנות שעושות כבוד למקור, מחומרי הגלם היקרים והאיכותיים ביותר בייבוא מיוחד ובהכנה במקום מהנודלס ועד הרטבים המיוחדים.
+				p וכן, הכול טרי. תמיד.
+				p סיירת הסושימנים וצוות הטבחים שלנו מחכים להזמנה שלכם מהמטבח לשולחן,עם שליח לבית ולמשרד או באיסוף עצמי.האתר והאפליקציה שלנו שם בדיוק בשביל זה, איך שנוח לכם.המנות ימצאו
+					br
+					| את דרכן אליכם.
+
+
+			.social
+				.social__item
+					+svg('ic-business','ic-business', '26', '26')
+					
+				.social__item
+					+svg('ic-instagram','ic-instagram', '26', '26')
+					
+				.social__item
+					+svg('ic-bookmark','ic-bookmark', '26', '26')
+
+				.social__item
+					+svg('ic-facebook','ic-facebook', '26', '26')
+
+				.social__item
+					+svg('ic-youtube','ic-youtube', '26', '26')
+
+		.wrap-landing__main
+			.btn-back
+				+svg('ic-arrow-left','ic-arrow-left', '22', '21')
+				| אחורה
+			
+			.form-landing
+				h1 מה חוגגים?
+
+				.form-landing__wrap
+					.form-landing__content
+						.form-landing__item
+							.form-landing__field
+								.select
+									.select__top
+										.select__val חתונה
+										.select__arr
+											+svg('ic-arrow-down','ic-arrow-down', '10', '7')
+
+									.select__popup
+										.select__popup-top
+											.select__title ברכה זה הכי חשוב!
+											.select__link נקה הכל
+
+										.select__list
+											.select__item במועד זה בו נקשרות לעד נשמותיכם,
+											.select__item הרשו לנו להיות בין מברכיכם.
+											.select__item ביום זה של קדושה,
+											.select__item קודשה לעד כאן האהבה.
+											.select__item זו השוררת פה עכשיו,
+											.select__item נאחל שתשרוד לעד.
+											.select__item שתיהיו חברים שותפים.
+											.select__item שתגיעו בצוותא לשיבה טובה
+											.select__item ותמיד, תמיד תשרור בניכם האהבה.
+											.select__item מזל - טוב!
+
+										.select__field
+											.select__label ממי?
+
+											input(type="text", value="אדם גולדמן")
+								
+										.select__prev.disable
+											+svg('ic-prev','ic-prev', '49', '49')
+
+										.select__next
+											+svg('ic-next','ic-next', '49', '49')
+						
+					.form-landing__bottom
+						input.btn(type="sumbit", value="המשך")
+
+		.wrap-landing__logo
+			img(src="assets/img/atmos.svg", alt="")
