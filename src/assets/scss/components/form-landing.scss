@@ -376,6 +376,35 @@ html[dir="rtl"]{
 	}
 }
 
+.form-time-fields{
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	gap: 30px;
+	margin-top: 20px;
+
+	&__sep{
+		flex-shrink: 0;
+		@include font(none, 600, 7rem, 1, var(--color-text));
+	}
+
+	&__item{
+		width: 50%;
+
+		input[type="text"],
+		input[type="email"],
+		input[type="number"],
+		input[type="password"],
+		input[type="time"],
+		input[type="date"]{
+			height: 9.6rem;
+			font-size: 7rem;
+			font-weight: 600;
+			text-align: center;
+		}
+	}
+}
+
 @media (max-width: 767px) {
 	.form-landing{
 		h1, .h1{
@@ -416,6 +445,19 @@ html[dir="rtl"]{
 		&__prev{left: -14px;}
 		&__next{right: -14px;}
 		&__field{margin-top: 30px;}
+	}
+
+	.form-time-fields{
+		&__item{
+			input[type="text"],
+			input[type="email"],
+			input[type="number"],
+			input[type="password"],
+			input[type="time"],
+			input[type="date"]{
+				font-size: 6rem;
+			}
+		}
 	}
 
 	
