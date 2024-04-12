@@ -1,0 +1,46 @@
+extends ../layout/main
+
+block variables
+	- var title = 'Final page';
+
+block content
+	.final-page
+		.form-landing
+			h1 איזה כיף!
+
+			.form-landing__text 
+				|שלחנו כרטיס מתנה בשווי ₪350 לעידן בן יהודה.
+				br
+				span.text-big אדם, שיחקת אותה...
+				br
+				br
+				br
+				|שנשלח לך את החשבונית?
+
+			.form-landing__wrap
+				.form-landing__content
+					.form-landing__item
+						.form-landing__field.form-landing__field_complex
+							input(type="text", value="טלפון")
+
+							.form-landing__radio-wrap
+								label.input-radio
+									input(type='radio', name="radio")
+									span.input-radio__mark
+									span.input-radio__text טלפון
+
+								label.input-radio
+									input(type='radio', name="radio", checked="checked")
+									span.input-radio__mark
+									span.input-radio__text אימייל
+
+					
+
+				.form-landing__bottom
+					button.btn(type="sumbit") שליחה
+						+svg('ic-send','ic-send', '22', '22')
+
+				.form-landing__note אין צורך, תודה
+
+		.final-page__logo
+			img(src="assets/img/atmos.svg", alt="")

@@ -1,0 +1,65 @@
+/*-------------- final-page -----------------*/
+.final-page{
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	width: 100%;
+	min-height: 100vh;
+	padding: 30px;
+	background:
+		url(../img/bg-texture.png) no-repeat center,
+		url(../img/confetti.png) no-repeat 0 100%;
+	position: relative;
+
+	h1, .h1{
+		text-align: initial;
+		margin-bottom: 1rem;
+	}
+
+	.form-landing{
+		width: 577px;
+		max-width: 100%;
+		background: #121212;
+		border-radius: 33px;
+		padding: 35px 55px 75px;
+
+		&__wrap{min-height: 0;}
+		&__content{margin-bottom: 47px;}
+	}
+
+	&__logo{
+		position: absolute;
+		bottom: 40px;
+		left: auto;
+		right: auto;
+		margin: 0 auto;
+	}
+}
+
+.wrapper_light{
+	.final-page{
+		.form-landing{background: #f8f8f8;}
+	}
+}
+
+@media (max-width: 991px) {
+	.final-page{
+		align-items: flex-start;
+		background-size: 100% 100%, 200px 200px;
+
+		.form-landing{
+			width: 100%;
+			background: transparent;
+			border-radius: 0;
+			padding: 0;
+		}
+	}
+
+	.wrapper_light{
+		.final-page{
+			background: url(../img/confetti.png) no-repeat 0 100%;
+			background-size: 200px 200px;
+			.form-landing{background: transparent;}
+		}
+	}
+}

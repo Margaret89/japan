@@ -13,6 +13,13 @@
 		}
 	}
 
+	&__text{
+		@include font(none, none, 1.6rem, 1.4, var(--color-text));
+		margin-bottom: 30px;
+
+		.text-big{font-size: 2rem;}
+	}
+
 	&__wrap{
 		display: flex;
 		flex-direction: column;
@@ -24,6 +31,7 @@
 
 	&__content{margin-bottom: 42px;}
 	&__item{margin-bottom: 33px;}
+	&__item:last-child{margin-bottom: 0;}
 
 	&__label{
 		@include font(none, 600, 1.4rem, 1.4, var(--color-text));
@@ -115,6 +123,13 @@
 	&__polit{
 		margin-bottom: 10px;
 		a{color: var(--color-text);}
+	}
+
+	&__note{
+		@include font(none, none, 1.6rem, 1.4, var(--color-text));
+		text-decoration: underline;
+		text-align: center;
+		margin-top: 20px;
 	}
 }
 
