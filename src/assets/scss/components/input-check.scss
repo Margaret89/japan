@@ -34,6 +34,10 @@
 		}
 	}
 
+	&__text{
+		u:hover{text-decoration: none;}
+	}
+
 	input[type=checkbox]:checked ~ &__mark{background: var(--color-text);}
 	input[type=checkbox]:checked ~ &__mark .icon{display: inline-block;}
 }

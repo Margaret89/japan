@@ -30,12 +30,26 @@
 	}
 
 	&__content{margin-bottom: 42px;}
-	&__item{margin-bottom: 33px;}
+
+	&__item{
+		margin-bottom: 33px;
+		position: relative;
+	}
+
 	&__item:last-child{margin-bottom: 0;}
 
+	&__field{
+		width: 100%;
+		padding-top: 20px;
+		position: relative;
+	}
+
 	&__label{
-		@include font(none, 600, 1.4rem, 1.4, var(--color-text));
-		margin-bottom: -11px;
+		display: block;
+		@include font(none, 600, 1.6rem, 1.4, var(--color-text));
+		position: absolute;
+		top: 34px;
+		transition: top 0.2s ease 0s, font-size 0.2s ease 0s;
 	}
 
 	input[type="text"],
@@ -76,8 +90,20 @@
 	input[type="password"]:focus,
 	input[type="time"]:focus,
 	input[type="date"]:focus,
-	textarea:focus{
+	textarea:focus,
+	input[type="text"]:not(:placeholder-shown),
+	input[type="number"]:not(:placeholder-shown),
+	input[type="email"]:not(:placeholder-shown),
+	input[type="password"]:not(:placeholder-shown),
+	input[type="time"]:not(:placeholder-shown),
+	input[type="date"]:not(:placeholder-shown),
+	textarea:not(:placeholder-shown){
 		border-color: var(--color-primary);
+
+		& ~ .form-landing__label{
+			font-size: 1.4rem;
+			top: 0;
+		}
 	}
 
 	&__item.error{
@@ -107,13 +133,17 @@
 		gap: 10px;
 		flex-shrink: 0;
 		padding-right: 20px;
+		padding-top: 20px;
 		border-bottom: 1px solid var(--color-text);
 	}
 
-	&__field_complex{
+	&__field-complex{
 		display: flex;
 		justify-content: space-between;
 	}
+
+	&__field-complex &__field{display: none;}
+	&__field-complex &__field.active{display: flex;}
 
 	&__bottom{
 		margin-top: auto;
@@ -141,18 +171,25 @@
 }
 
 .form-landing-choose{
-	display: inline-flex;
-	flex-direction: column;
-	align-items: center;
-	justify-content: center;
-	gap: 3px;
-	text-align: center;
 	height: 138px;
 	width: 138px;
-	border-radius: 34px;
-	background: #121212;
-	transition: background-color 0.2s ease 0s;
-	cursor: pointer;
+
+	input[type=radio]{display: none;}
+
+	&__content{
+		display: inline-flex;
+		flex-direction: column;
+		align-items: center;
+		justify-content: center;
+		gap: 3px;
+		width: 100%;
+		height: 100%;
+		text-align: center;
+		border-radius: 34px;
+		background: #121212;
+		transition: background-color 0.2s ease 0s;
+		cursor: pointer;
+	}
 
 	&__icon{
 		display: inline-flex;
@@ -170,12 +207,12 @@
 		@include font(none, none, 1.2rem, 1.4, none);
 	}
 
-	&:hover,
-	&.active{
+	&:hover &__content,
+	input[type=radio]:checked ~ &__content{
 		background: var(--color-primary);
 	}
 
-	&.active{cursor: auto;}
+	input[type=radio]:checked ~ &__content{cursor: auto;}
 }
 
 .wrapper_light{
