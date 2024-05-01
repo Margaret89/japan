@@ -4,7 +4,7 @@ block variables
 	- var title = 'Project';
 
 block content
-	.wrap-landing
+	.wrap-landing.js-wrap-landing
 		.landing-info
 			.landing-info__logo
 				img(src="assets/img/logo.png", alt="")
@@ -39,72 +39,199 @@ block content
 					+svg('ic-youtube','ic-youtube', '26', '26')
 
 		.wrap-landing__main
-			.form-landing
-				h1 אז את מי מפנקים היום?
-					img(src="assets/img/smile-like.png", alt="")
+			form(action="/")
+				.btn-back.js-btn-back
+					+svg('ic-arrow-left','ic-arrow-left', '22', '21')
+					| אחורה
 
-				.form-landing__wrap
-					.form-landing__content
-						.form-landing__item
-							.form-landing__field
-								input(type="text", id="name", name="name", placeholder="")
-								label(for="name").form-landing__label שם מלא
+				.landing-step.js-landing-step.active(data-step="1")
+					.form-landing
+						h1 אז את מי מפנקים היום?
+							img(src="assets/img/smile-like.png", alt="")
 
-						.form-landing__item
-							.form-landing__field-complex
-								.form-landing__field.active.js-choose-field(data-val="phone")
-									input(type="text", id="phone", name="phone", placeholder="")
-									label(for="phone").form-landing__label טלפון
+						.form-landing__wrap
+							.form-landing__content
+								.form-landing__item
+									.form-landing__field
+										input(type="text", id="name", name="name", placeholder="", required="required").js-landing-input
+										label(for="name").form-landing__label שם מלא
 
-								.form-landing__field.js-choose-field(data-val="email")
-									input(type="email", id="email", name="email", placeholder="")
-									label(for="email").form-landing__label אימייל
+								.form-landing__item
+									.form-landing__field-complex
+										.form-landing__field.active.js-choose-field(data-val="phone")
+											input(type="text", id="phone", name="phone", placeholder="", required="required").js-landing-input
+											label(for="phone").form-landing__label טלפון
 
-								.form-landing__radio-wrap
-									label.input-radio
-										input.js-choose-radio(type='radio', name="radio", checked="checked", value="phone")
-										span.input-radio__mark
-										span.input-radio__text טלפון
+										.form-landing__field.js-choose-field(data-val="email")
+											input(type="email", id="email", name="email", placeholder="", required="required")
+											label(for="email").form-landing__label אימייל
 
-									label.input-radio
-										input.js-choose-radio(type='radio', name="radio", value="email")
-										span.input-radio__mark
-										span.input-radio__text אימייל
+										.form-landing__radio-wrap
+											label.input-radio
+												input.js-choose-radio(type='radio', name="radio", checked="checked", value="phone")
+												span.input-radio__mark
+												span.input-radio__text טלפון
 
-						.form-landing__item
-							.form-landing__field
-								input(type="text", placeholder="", id="price", name="price")
-								label(for="price").form-landing__label סכום לפינוק
+											label.input-radio
+												input.js-choose-radio(type='radio', name="radio", value="email")
+												span.input-radio__mark
+												span.input-radio__text אימייל
 
-						.form-landing-choose-list
-							label.form-landing-choose
-								input(type="radio", name="choose-pay", value="gift")
+								.form-landing__item
+									.form-landing__field
+										input(type="text", placeholder="", id="price", name="price", required="required").js-landing-input
+										label(for="price").form-landing__label סכום לפינוק
 
-								.form-landing-choose__content
-									.form-landing-choose__icon
-										+svg('ic-gift','ic-gift', '48', '48')
+								.form-landing-choose-list
+									label.form-landing-choose
+										input(type="radio", name="choose-pay", value="gift", required="required").js-landing-input
 
-									.form-landing-choose__label כרטיס מתנה
+										.form-landing-choose__content
+											.form-landing-choose__icon
+												+svg('ic-gift','ic-gift', '48', '48')
 
-							label.form-landing-choose
-								input(type="radio", name="choose-pay", value="card")
-								.form-landing-choose__content
-									.form-landing-choose__icon
-										+svg('ic-credit-card','ic-credit-card', '43', '35')
+											.form-landing-choose__label כרטיס מתנה
 
-									.form-landing-choose__label כרטיס נטען
+									label.form-landing-choose
+										input(type="radio", name="choose-pay", value="card", required="required").js-landing-input
+										.form-landing-choose__content
+											.form-landing-choose__icon
+												+svg('ic-credit-card','ic-credit-card', '43', '35')
 
-					.form-landing__bottom
-						.form-landing__polit
-							label.input-check
-								input(type='checkbox')
-								span.input-check__mark
-									+svg('ic-tick','ic-tick', '8', '6')
-								span.input-check__text קראתי ואני מאשר את 
-									u.js-open-popup תנאי השימוש
+											.form-landing-choose__label כרטיס נטען
+
+							.form-landing__bottom
+								.form-landing__polit
+									.input-check
+										input(type='checkbox', required="required", id="polit").js-landing-input
+										label(for="polit").input-check__mark
+											+svg('ic-tick','ic-tick', '8', '6')
+										span.input-check__text קראתי ואני מאשר את 
+											u.js-open-popup תנאי השימוש
 
 
-						input.btn(type="sumbit", value="המשך", disabled="disabled")
+								span.btn.disable.js-btn-next המשך
+
+				.landing-step.js-landing-step(data-step="2")
+					.form-landing
+						h1 מה חוגגים?
+
+						.form-landing__wrap
+							.form-landing__content
+								.form-landing__item
+									.form-landing__field
+										select.js-select-celebrate(name="celebrate", required)
+											option(value="", disabled, selected, hidden) לבחירת סוג האירוע
+											option(value="1") חתונה
+											option(value="2") יום הולדת
+
+										.select-popup.js-select-phrases
+											.select-popup__top
+												.select-popup__title ברכה זה הכי חשוב!
+												.select-popup__link נקה הכל
+
+											.select-popup__list
+												.select-popup__item במועד זה בו נקשרות לעד נשמותיכם,
+												.select-popup__item הרשו לנו להיות בין מברכיכם.
+												.select-popup__item ביום זה של קדושה,
+												.select-popup__item קודשה לעד כאן האהבה.
+												.select-popup__item זו השוררת פה עכשיו,
+												.select-popup__item נאחל שתשרוד לעד.
+												.select-popup__item שתיהיו חברים שותפים.
+												.select-popup__item שתגיעו בצוותא לשיבה טובה
+												.select-popup__item ותמיד, תמיד תשרור בניכם האהבה.
+												.select-popup__item מזל - טוב!
+
+											
+											input(type="hidden", name="sentence", value="אדם גולדמן")
+									
+											.select-popup__prev.disable
+												+svg('ic-prev','ic-prev', '49', '49')
+
+											.select-popup__next
+												+svg('ic-next','ic-next', '49', '49')
+								
+								.form-landing__item.hide.js-field-author
+									.form-landing__field
+										input(type="text", placeholder="", id="author", name="author", required="required").js-landing-input
+										label(for="price").form-landing__label ממי?
+
+
+							.form-landing__bottom
+								span.btn.disable.js-btn-next המשך
+
+				.landing-step.js-landing-step(data-step="3")
+					.form-pic
+						h1 שנוסיף תמונה?
+
+						.form-pic__wrap
+							label.choose-pic.js-choose-pic
+								input.js-choose-pic-input(type="file", accept="image/*", id="picture")
+								.choose-pic__content
+									.choose-pic__img.js-choose-pic-img
+
+									.choose-pic__btn
+										+svg('ic-photo','ic-photo', '88', '80')
+
+									.choose-pic__label
+										|ניתן לגרור תמונה לכאן
+										+svg('ic-cursor','ic-cursor', '17', '17')
+
+									.choose-pic__del.js-choose-pic-del
+										+svg('ic-bin','ic-bin', '34', '34')
+
+							
+							.form-pic__actions.active.js-form-pic-actions(data-status="before")
+								.form-pic__or -או-
+
+								.form-pic__bottom
+									label(for="picture").btn.btn_border בחירה מהגלריה
+
+								.form-pic__note.js-btn-next אין צורך, אפשר להתקדם
+
+							.form-pic__actions.js-form-pic-actions(data-status="after")
+								.form-pic__or &nbsp;
+
+								.form-pic__bottom
+									.btn.js-btn-next המשך
+
+				.landing-step.js-landing-step(data-step="4")
+					.form-landing
+						h1 מתי לשלוח?
+
+						.form-landing__wrap
+							.form-landing__content
+								.form-landing__item
+									.form-landing__field
+										select.js-select-day(name="day", required)
+											option(value="now") עכשיו!
+											option(value="2") מחר 31/02/2024
+
+								.form-landing__item.hide.js-select-time
+									.form-landing__label.d-md-block בשעה
+
+									.form-time-fields
+										.form-time-fields__item
+											input(type="text", value="30")
+
+										.form-time-fields__sep :
+										
+										.form-time-fields__item
+											input(type="text", value="20")
+										
+								
+							.form-landing__bottom
+								span.btn.js-btn-next המשך
+
+				.landing-step.js-landing-step(data-step="5")
+					.form-pay-wrap
+						h1 תשלום מאובטח
+
+						.form-pay
+							img(src="assets/img/payment.png", alt="", style="display: block; margin: 0 auto;")
+						
+						.form-pay-wrap__bottom
+							.btn.js-btn-next המשך
 
 		.wrap-landing__logo
 			img(src="assets/img/atmos.svg", alt="")
@@ -118,3 +245,49 @@ block content
 				h2 תנאי השימוש
 
 				p לורם איפסום דולור סיט אמט, קונסקטורר אדיפיסינג אלית גולר מונפרר סוברט לורם שבצק יהול, לכנוץ בעריר גק ליץ, קולורס מונפרד אדנדום סילקוף, מרגשי ומרגשח. עמחליף קוואזי במר מודוף. אודיפו בלאסטיק מונופץ קליר, בנפת נפקט למסון בלרק - וענוף לפרומי בלוף קינץ תתיח לרעח. לת צשחמי צש בליא, מנסוטו צמלח לביקו ננבי, צמוקו בלוקריה שיצמה ברורק.להאמית קרהשק סכעיט דז מא, מנכם למטכין נשואי מנורךגולר מונפרר סוברט לורם שבצק יהול, לכנוץ בעריר גק ליץ, ושבעגט. ליבם סולגק. בראיט ולחת צורק מונחף, בגורמי מגמש. תרבנך וסתעד לכנו סתשם השמה - לתכי מורגם בורק? לתיג ישבעס.מוסן מנת. להאמית קרהשק סכעיט דז מא, מנכם למטכין נשואי מנורך. לורם איפסום דולור סיט אמט, קונסקטורר אדיפיסינג אלית. סת אלמנקום ניסי נון ניבאה. דס איאקוליס וולופטה דיאם. וסטיבולום אט דולור, קראס אגת לקטוס וואל אאוגו וסטיבולום סוליסי טידום בעליק. קולורס מונפרד אדנדום סילקוף, מרגשי ומרגשח. עמחליף לפרומי בלוף קינץ תתיח לרעח. לת צשחמי צש בליא, מנסוטו צמלח לביקו ננבי, צמוקו בלוקריה שיצמה ברורק. סחטיר בלובק. תצטנפל בלינדו למרקל אס לכימפו, דול, צוט ומעיוט - לפתיעם ברשג - ולתיעם גדדיש. קוויז דומור ליאמום בלינך רוגצה. לפמעט מוסן מנת. הועניב היושבב שערש שמחויט - שלושע ותלברו חשלו שעותלשך וחאית נובש ערששף. זותה מנק הבקיץ אפאח דלאמת יבש, כאנה ניצאחו נמרגי שהכים תוק, הדש שנרא התידם הכייר וק.גולר מונפרר סוברט לורם שבצק יהול, לכנוץ בעריר גק ליץ, ושבעגט ליבם סולגק. בראיט ולחת צורק מונחף, בגורמי מגמש. תרבנך וסתעד לכנו סתשם השמה - לתכי מורגם בורק? לתיג ישבעס.לורם איפסום דולור סיט אמט, הועניב היושבב שערש שמחויט - שלושע ותלברו חשלו שעותלשך וחאית נובש ערששף. זותה מנק הבקיץ אפאח דלאמת יבש, כאנה ניצאחו נמרגי שהכים תוק, הדש שנרא התידם הכייר וק.קולורס מונפרד אדנדום סילקוף, מרגשי ומרגשח. עמחליף לורם איפסום דולור סיט אמט, קונסקטורר אדיפיסינג אלית גולר מונפרר סוברט לורם שבצק יהול, לכנוץ בעריר גק ליץ, קולורס מונפרד אדנדום סילקוף, מרגשי ומרגשח. עמחליף קוואזי במר מודוף. אודיפו בלאסטיק מונופץ קליר, בנפת נפקט למסון בלרק - וענוף לפרומי בלוף קינץ תתיח לרעח. לת צשחמי צש בליא, מנסוטו צמלח לביקו ננבי, צמוקו בלוקריה שיצמה ברורק.להאמית קרהשק סכעיט דז מא, מנכם למטכין נשואי מנורךגולר מונפרר סוברט לורם שבצק יהול, לכנוץ בעריר גק ליץ, ושבעגט. ליבם סולגק. בראיט ולחת צורק מונחף, בגורמי מגמש. תרבנך וסתעד לכנו סתשם השמה - לתכי מורגם בורק? לתיג ישבעס.מוסן מנת. להאמית קרהשק סכעיט דז מא, מנכם למטכין נשואי מנורך. לורם איפסום דולור
+	.final-page.js-final-page
+		.form-landing
+			h1 איזה כיף!
+
+			.form-landing__text 
+				|שלחנו כרטיס מתנה בשווי ₪350 לעידן בן יהודה.
+				br
+				span.text-big אדם, שיחקת אותה...
+				br
+				br
+				br
+				|שנשלח לך את החשבונית?
+
+			.form-landing__wrap
+				.form-landing__content
+					.form-landing__item
+						.form-landing__field-complex
+							.form-landing__field.active.js-choose-field(data-val="phone")
+								input(type="text", id="phone", name="phone", placeholder="", required="required").js-landing-input
+								label(for="phone").form-landing__label טלפון
+
+							.form-landing__field.js-choose-field(data-val="email")
+								input(type="email", id="email", name="email", placeholder="", required="required")
+								label(for="email").form-landing__label אימייל
+
+							.form-landing__radio-wrap
+								label.input-radio
+									input.js-choose-radio(type='radio', name="radio", checked="checked", value="phone")
+									span.input-radio__mark
+									span.input-radio__text טלפון
+
+								label.input-radio
+									input.js-choose-radio(type='radio', name="radio", value="email")
+									span.input-radio__mark
+									span.input-radio__text אימייל
+
+					
+
+				.form-landing__bottom
+					button.btn(type="sumbit") שליחה
+						+svg('ic-send','ic-send', '22', '22')
+
+				.form-landing__note אין צורך, תודה
+
+		.final-page__logo
+			img(src="assets/img/atmos.svg", alt="")

@@ -130,10 +130,7 @@ button.btn{
 }
 
 .btn-back{
-	display: inline-flex;
-	align-items: center;
-	justify-content: center;
-	gap: 3px;
+	display: none;
 	height: 5.6rem;
 	background: #292D32;
 	border: none;
@@ -147,6 +144,13 @@ button.btn{
 	transition: all 0.2s ease 0s;
 
 	&:hover{background: var(--color-primary);}
+
+	&.active{
+		display: inline-flex;
+		align-items: center;
+		justify-content: center;
+		gap: 3px;
+	}
 }
 
 .space{

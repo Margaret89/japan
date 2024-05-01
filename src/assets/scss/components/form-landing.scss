@@ -34,6 +34,8 @@
 	&__item{
 		margin-bottom: 33px;
 		position: relative;
+
+		&.hide{display: none;}
 	}
 
 	&__item:last-child{margin-bottom: 0;}
@@ -128,6 +130,33 @@
 		}
 	}
 
+	select{
+		display: flex;
+		align-items: center;
+		height: 4.8rem;
+		width: 100%;
+		font-family: var(--font-site);
+		@include font(normal, normal, 1.6rem, 1, var(--color-text));
+		padding: 0;
+		border-radius: 0;
+		border: 0;
+		border-bottom: 1px solid var(--color-text);
+		outline: 0;
+		margin: 0;
+		background: transparent;
+		box-shadow: none;
+		transition: border 0.2s ease 0s;
+	}
+
+	option{
+		font-size: 1.6rem;
+		line-height: 2;
+		color: #000;
+	}
+
+	select:required:invalid{color: #3D4043;}
+	option[value=""][disabled]{display: none;}
+
 	&__radio-wrap{
 		display: flex;
 		gap: 10px;
@@ -160,6 +189,9 @@
 		text-decoration: underline;
 		text-align: center;
 		margin-top: 20px;
+		cursor: pointer;
+
+		&:hover{text-decoration: none;}
 	}
 }
 
@@ -255,44 +287,7 @@
 		color: var(--color-text);
 	}
 
-	&__popup{
-		width: 100%;
-		padding-top: 30px;
-		position: absolute;
-		top: 100%;
-		left: 0;
-	}
-
-	&__popup-top{
-		display: flex;
-		justify-content: space-between;
-		gap: 10px;
-		margin-bottom: 10px;
-	}
-
-	&__title{
-		@include font(none, none600, 1.6rem, 1.2, var(--color-text));
-	}
-
-	&__link{
-		@include font(none, none, 1.4rem, 1.2, var(--color-danger));
-		text-decoration: underline;
-		cursor: pointer;
-
-		&:hover{text-decoration: none;}
-	}
-
-	&__list{
-		max-height: 300px;
-		background: #121212;
-		border-bottom: 1px solid var(--color-text);
-		padding: 20px 24px;
-		overflow-y: auto
-	}
-
-	&__item{
-		@include font(none, none, 1.6rem, 1.4, var(--color-text));
-	}
+	
 
 	&__label{
 		@include font(none, 600, 1.4rem, 1.4, var(--color-text));
@@ -359,6 +354,46 @@
 		}
 	}
 
+}
+
+.select-popup{
+	display: none;
+	width: 100%;
+	padding-top: 30px;
+
+	&.active{display: block;}
+
+	&__top{
+		display: flex;
+		justify-content: space-between;
+		gap: 10px;
+		margin-bottom: 10px;
+	}
+
+	&__title{
+		@include font(none, none600, 1.6rem, 1.2, var(--color-text));
+	}
+
+	&__link{
+		@include font(none, none, 1.4rem, 1.2, var(--color-danger));
+		text-decoration: underline;
+		cursor: pointer;
+
+		&:hover{text-decoration: none;}
+	}
+
+	&__list{
+		max-height: 300px;
+		background: #121212;
+		border-bottom: 1px solid var(--color-text);
+		padding: 20px 24px;
+		overflow-y: auto
+	}
+
+	&__item{
+		@include font(none, none, 1.6rem, 1.4, var(--color-text));
+	}
+
 	&__next,
 	&__prev{
 		position: absolute;
@@ -386,7 +421,7 @@
 }
 
 html[dir="rtl"]{
-	.select{
+	.select-popup{
 		&__next,
 		&__prev{
 			.icon{transform: rotate(180deg);}

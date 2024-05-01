@@ -4,6 +4,8 @@
 	min-height: 100vh;
 	position: relative;
 
+	&.hide{display: none;}
+
 	&__main{
 		display: flex;
 		align-items: center;
