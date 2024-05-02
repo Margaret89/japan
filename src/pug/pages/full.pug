@@ -44,7 +44,7 @@ block content
 					+svg('ic-arrow-left','ic-arrow-left', '22', '21')
 					| אחורה
 
-				.landing-step.js-landing-step.active(data-step="1")
+				.landing-step.js-landing-step(data-step="1")
 					.form-landing
 						h1 אז את מי מפנקים היום?
 							img(src="assets/img/smile-like.png", alt="")
@@ -128,19 +128,20 @@ block content
 										.select-popup.js-select-phrases
 											.select-popup__top
 												.select-popup__title ברכה זה הכי חשוב!
-												.select-popup__link נקה הכל
+												.select-popup__link.js-clear-field נקה הכל
 
-											.select-popup__list
-												.select-popup__item במועד זה בו נקשרות לעד נשמותיכם,
-												.select-popup__item הרשו לנו להיות בין מברכיכם.
-												.select-popup__item ביום זה של קדושה,
-												.select-popup__item קודשה לעד כאן האהבה.
-												.select-popup__item זו השוררת פה עכשיו,
-												.select-popup__item נאחל שתשרוד לעד.
-												.select-popup__item שתיהיו חברים שותפים.
-												.select-popup__item שתגיעו בצוותא לשיבה טובה
-												.select-popup__item ותמיד, תמיד תשרור בניכם האהבה.
-												.select-popup__item מזל - טוב!
+											.select-popup__field
+												textarea(name="phrases", required="required").js-select-phrases-field.js-landing-input
+													| במועד זה בו נקשרות לעד נשמותיכם,
+													| הרשו לנו להיות בין מברכיכם.
+													| ביום זה של קדושה,
+													| קודשה לעד כאן האהבה.
+													| זו השוררת פה עכשיו,
+													| נאחל שתשרוד לעד.
+													| שתיהיו חברים שותפים.
+													| שתגיעו בצוותא לשיבה טובה
+													| ותמיד, תמיד תשרור בניכם האהבה.
+													| מזל - טוב!
 
 											
 											input(type="hidden", name="sentence", value="אדם גולדמן")
@@ -195,7 +196,7 @@ block content
 								.form-pic__bottom
 									.btn.js-btn-next המשך
 
-				.landing-step.js-landing-step(data-step="4")
+				.landing-step.js-landing-step.active(data-step="4")
 					.form-landing
 						h1 מתי לשלוח?
 
@@ -211,13 +212,14 @@ block content
 									.form-landing__label.d-md-block בשעה
 
 									.form-time-fields
-										.form-time-fields__item
-											input(type="text", value="30")
+										input(type="time", value="12:30")
+										//- .form-time-fields__item
+										//- 	input(type="text", value="30")
 
-										.form-time-fields__sep :
+										//- .form-time-fields__sep :
 										
-										.form-time-fields__item
-											input(type="text", value="20")
+										//- .form-time-fields__item
+										//- 	input(type="text", value="20")
 										
 								
 							.form-landing__bottom
@@ -237,6 +239,7 @@ block content
 			img(src="assets/img/atmos.svg", alt="")
 
 	.popup-wrap.js-popup
+		.popup-wrap__bg.js-close-popup
 		.popup
 			.popup__close.js-close-popup
 				+svg('ic-close','ic-close', '18', '18')

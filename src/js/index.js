@@ -46,10 +46,12 @@ document.addEventListener("DOMContentLoaded", () => {
 	});
 
 	//Close popup
-	document.querySelector(".js-close-popup").addEventListener("click", function(e){
-		let popup = document.querySelector('.js-popup');
+	document.querySelectorAll(".js-close-popup").forEach(function(elem){
+		elem.onclick = function(e){
+			let popup = document.querySelector('.js-popup');
 
-		popup.classList.remove('active');
+			popup.classList.remove('active');
+	}
 	});
 
 	//valid form
@@ -127,24 +129,25 @@ document.addEventListener("DOMContentLoaded", () => {
 	//Next step
 	document.querySelectorAll(".js-btn-next").forEach(function(btn){
 		btn.onclick = function(e){
-			numStep++;
-			console.log('numStep = ', numStep);
-
-			if(numStep == 6){
-				document.querySelector('.js-wrap-landing').classList.add('hide');
-				document.querySelector('.js-final-page').classList.add('active');
-			}else{
-				document.querySelector('.js-wrap-landing').classList.remove('hide');
-				document.querySelector('.js-final-page').classList.remove('active');
-
-				document.querySelectorAll('.js-landing-step').forEach(function(step){
-					step.classList.remove('active');
-				});
+			if (!e.target.classList.contains('disable')) {
+				numStep++;
+				console.log('numStep = ', numStep);
 	
-				document.querySelector('.js-landing-step[data-step="'+numStep+'"]').classList.add('active');
-				document.querySelector('.js-btn-back').classList.add('active');
+				if(numStep == 6){
+					document.querySelector('.js-wrap-landing').classList.add('hide');
+					document.querySelector('.js-final-page').classList.add('active');
+				}else{
+					document.querySelector('.js-wrap-landing').classList.remove('hide');
+					document.querySelector('.js-final-page').classList.remove('active');
+	
+					document.querySelectorAll('.js-landing-step').forEach(function(step){
+						step.classList.remove('active');
+					});
+		
+					document.querySelector('.js-landing-step[data-step="'+numStep+'"]').classList.add('active');
+					document.querySelector('.js-btn-back').classList.add('active');
+				}
 			}
-			
 		}
 	});
 
@@ -169,6 +172,9 @@ document.addEventListener("DOMContentLoaded", () => {
 	document.querySelector('.js-select-celebrate').onchange = function(e){
 		document.querySelector('.js-select-phrases').classList.add('active');
 		document.querySelector('.js-field-author').classList.remove('hide');
+		document.querySelectorAll('.js-landing-step[data-step="2"] .js-landing-input').forEach(function(input){
+			validForm(input);
+		});
 	}
 
 	//Validation of the form at the second step when changing the field value
@@ -177,6 +183,12 @@ document.addEventListener("DOMContentLoaded", () => {
 			validForm(input);
 		}
 	});
+
+	//Clear textarea
+	document.querySelector(".js-clear-field").onclick = function(e){
+		document.querySelector('.js-select-phrases-field').value = '';
+	}
+	
 
 	//file selection
 	const dropContainer = document.querySelector(".js-choose-pic");
