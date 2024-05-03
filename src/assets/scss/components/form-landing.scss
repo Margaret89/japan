@@ -471,7 +471,6 @@ html[dir="rtl"]{
 	gap: 30px;
 	margin-top: 20px;
 
-
 	input[type="time"]{
 		height: 9.6rem;
 		font-size: 7rem;
@@ -479,26 +478,35 @@ html[dir="rtl"]{
 		text-align: center;
 	}
 
-	// &__sep{
-	// 	flex-shrink: 0;
-	// 	@include font(none, 600, 7rem, 1, var(--color-text));
-	// }
+	&__sep{
+		flex-shrink: 0;
+		@include font(none, 600, 7rem, 1, var(--color-text));
+	}
 
-	// &__item{
-	// 	width: 50%;
+	&__item{
+		width: 50%;
 
-	// 	input[type="text"],
-	// 	input[type="email"],
-	// 	input[type="number"],
-	// 	input[type="password"],
-	// 	input[type="time"],
-	// 	input[type="date"]{
-	// 		height: 9.6rem;
-	// 		font-size: 7rem;
-	// 		font-weight: 600;
-	// 		text-align: center;
-	// 	}
-	// }
+		input[type="text"],
+		input[type="email"],
+		input[type="number"],
+		input[type="password"],
+		input[type="time"],
+		input[type="date"]{
+			height: 9.6rem;
+			font-size: 7rem;
+			font-weight: 600;
+			text-align: center;
+		}
+
+		select{
+			height: 9.6rem;
+			font-size: 7rem;
+			font-weight: 600;
+			text-align: center;
+			-moz-appearance: none;
+			-webkit-appearance: none;
+		}
+	}
 }
 
 @media (max-width: 767px) {

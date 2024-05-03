@@ -44,7 +44,7 @@ block content
 					+svg('ic-arrow-left','ic-arrow-left', '22', '21')
 					| אחורה
 
-				.landing-step.js-landing-step(data-step="1")
+				.landing-step.js-landing-step.active(data-step="1")
 					.form-landing
 						h1 אז את מי מפנקים היום?
 							img(src="assets/img/smile-like.png", alt="")
@@ -196,7 +196,7 @@ block content
 								.form-pic__bottom
 									.btn.js-btn-next המשך
 
-				.landing-step.js-landing-step.active(data-step="4")
+				.landing-step.js-landing-step(data-step="4")
 					.form-landing
 						h1 מתי לשלוח?
 
@@ -209,18 +209,20 @@ block content
 											option(value="2") מחר 31/02/2024
 
 								.form-landing__item.hide.js-select-time
-									.form-landing__label.d-md-block בשעה
+									.form-landing__label.d-md-block(style="top:0") בשעה
 
-									.form-time-fields
-										input(type="time", value="12:30")
-										//- .form-time-fields__item
-										//- 	input(type="text", value="30")
+									.form-time-fields-wrap
+										//- input.js-time-input(type='time', name='appt-time', min='8:00', max='20:00', style="di")
 
-										//- .form-time-fields__sep :
-										
-										//- .form-time-fields__item
-										//- 	input(type="text", value="20")
-										
+										.form-time-fields(dir="ltr")
+											.form-time-fields__item
+												select#hour(name='hour', data-min="8", data-max="20")
+
+											.form-time-fields__sep :
+											
+											.form-time-fields__item
+												select#minute(name='minute')
+								
 								
 							.form-landing__bottom
 								span.btn.js-btn-next המשך

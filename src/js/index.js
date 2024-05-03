@@ -137,6 +137,14 @@ document.addEventListener("DOMContentLoaded", () => {
 					document.querySelector('.js-wrap-landing').classList.add('hide');
 					document.querySelector('.js-final-page').classList.add('active');
 				}else{
+					if(numStep == 4){
+						if(document.querySelector('.js-select-day').value == 'now'){
+							document.querySelector('.js-select-time').classList.add('hide');
+						}else{
+							document.querySelector('.js-select-time').classList.remove('hide');
+						}
+					}
+
 					document.querySelector('.js-wrap-landing').classList.remove('hide');
 					document.querySelector('.js-final-page').classList.remove('active');
 	
@@ -263,11 +271,58 @@ document.addEventListener("DOMContentLoaded", () => {
 
 	// when choosing a day, we show the time
 	document.querySelector('.js-select-day').onchange = function(e){
-		console.log('e = ', e.target.value);
 		if(e.target.value == 'now'){
 			document.querySelector('.js-select-time').classList.add('hide');
 		}else{
 			document.querySelector('.js-select-time').classList.remove('hide');
 		}
 	}
+
+	// timepicker
+	// var hourStart = document.querySelector('.js-time-input').getAttribute('min');
+	// var hourFinish = document.querySelector('.js-time-input').getAttribute('max');
+	
+	// // const timeControl = document.querySelector('.js-time-input');
+	// // timeControl.value = hourStart;
+
+	// hourStart = parseInt(hourStart.substring(0, hourStart.length - 3));
+	// hourFinish = parseInt(hourFinish.substring(0, hourFinish.length - 3));
+	
+	const hourSelect = document.querySelector("#hour");
+	const minuteSelect = document.querySelector("#minute");
+	var hourStart =  parseInt(hourSelect.getAttribute('data-min'));
+	var hourFinish =  parseInt(hourSelect.getAttribute('data-max'));
+
+	// Dynamic filling of hours and minutes
+	populateHours();
+	populateMinutes();
+
+	function populateHours() {
+		// Filling in the <select> hours with the open hours of the day
+		for (let i = hourStart; i <= hourFinish; i++) {
+			const option = document.createElement("option");
+			option.textContent = i;
+			hourSelect.appendChild(option);
+		}
+	}
+
+	function populateMinutes() {
+		// we fill the minutes with <select> 60 hours of each minute
+		for (let i = 0; i <= 59; i++) {
+			const option = document.createElement("option");
+			option.textContent = i < 10 ? `0${i}` : i;
+			minuteSelect.appendChild(option);
+		}
+	}
+
+	//сделаем так, чтобы если час 18, то значение минут устанавливалось на 00
+	// — нельзя выбрать время после 18:00
+	// function setMinutesToZero() {
+	// if (hourSelect.value === "18") {
+	// 	minuteSelect.value = "00";
+	// }
+	// }
+
+	// hourSelect.onchange = setMinutesToZero;
+	// minuteSelect.onchange = setMinutesToZero;
 });
