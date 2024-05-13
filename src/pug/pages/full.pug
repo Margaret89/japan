@@ -130,26 +130,54 @@ block content
 												.select-popup__title ברכה זה הכי חשוב!
 												.select-popup__link.js-clear-field נקה הכל
 
-											.select-popup__field
-												textarea(name="phrases", required="required").js-select-phrases-field.js-landing-input
-													| במועד זה בו נקשרות לעד נשמותיכם,
-													| הרשו לנו להיות בין מברכיכם.
-													| ביום זה של קדושה,
-													| קודשה לעד כאן האהבה.
-													| זו השוררת פה עכשיו,
-													| נאחל שתשרוד לעד.
-													| שתיהיו חברים שותפים.
-													| שתגיעו בצוותא לשיבה טובה
-													| ותמיד, תמיד תשרור בניכם האהבה.
-													| מזל - טוב!
+											.select-popup__slider
+												.select-popup__field-wrap
+													.select-popup__field.active.js-select-phrases-field(data-num="1")
+														textarea(name="phrases", required="required", maxlength="225").js-landing-input
+															| במועד זה בו נקשרות לעד נשמותיכם,
+															| הרשו לנו להיות בין מברכיכם.
+															| ביום זה של קדושה,
+															| קודשה לעד כאן האהבה.
+															| זו השוררת פה עכשיו,
+															| נאחל שתשרוד לעד.
+															| שתיהיו חברים שותפים.
+															| שתגיעו בצוותא לשיבה טובה
+															| ותמיד, תמיד תשרור בניכם האהבה.
+															| מזל - טוב!
+
+														.select-popup-count
+															span.select-popup-count__cur.js-select-popup-count-cur 0
+															|/
+															span.select-popup-count__all.js-select-popup-count-all 225
+
+													.select-popup__field.js-select-phrases-field(data-num="2")
+														textarea(name="phrases", required="required", maxlength="225").js-landing-input
+															| במועד זה בו נקשרות לעד נשמותיכם,
+															| הרשו לנו להיות בין מברכיכם.
+															| ביום זה של קדושה,
+
+														.select-popup-count
+															span.select-popup-count__cur.js-select-popup-count-cur 0
+															|/
+															span.select-popup-count__all.js-select-popup-count-all 225
+
+													.select-popup__field.js-select-phrases-field(data-num="3")
+														textarea(name="phrases", required="required", maxlength="225").js-landing-input
+															| ותמיד, תמיד תשרור בניכם האהבה.
+															| מזל - טוב!
+
+														.select-popup-count
+															span.select-popup-count__cur.js-select-popup-count-cur 0
+															|/
+															span.select-popup-count__all.js-select-popup-count-all 225
 
 											
 											input(type="hidden", name="sentence", value="אדם גולדמן")
 									
-											.select-popup__prev.disable
+											.select-popup__prev.disable.js-select-popup-prev
 												+svg('ic-prev','ic-prev', '49', '49')
 
-											.select-popup__next
+											.select-popup__next.js-select-popup-next
 												+svg('ic-next','ic-next', '49', '49')
 								
 								.form-landing__item.hide.js-field-author
@@ -206,22 +234,41 @@ block content
 									.form-landing__field
 										select.js-select-day(name="day", required)
 											option(value="now") עכשיו!
-											option(value="2") מחר 31/02/2024
+											option(value="date") תאריך אחר
 
-								.form-landing__item.hide.js-select-time
+								.form-landing__item.js-select-time
 									.form-landing__label.d-md-block(style="top:0") בשעה
 
-									.form-time-fields-wrap
-										//- input.js-time-input(type='time', name='appt-time', min='8:00', max='20:00', style="di")
+									.form-time-fields
+										.form-time-fields__item
+											input.js-input-minute(type="text", name="minut" value="30", placeholder="", maxlength="2")
 
-										.form-time-fields(dir="ltr")
-											.form-time-fields__item
-												select#hour(name='hour', data-min="8", data-max="20")
+										.form-time-fields__sep :
+										
+										.form-time-fields__item
+											input.js-input-hour(type="text", name="hour", value="20", placeholder="", maxlength="2")
 
-											.form-time-fields__sep :
+									
+									
+									//- .form-time-fields-wrap
+									//- 	//- input.js-time-input(type='time', name='appt-time', min='8:00', max='20:00', style="di")
+
+									//- 	.form-time-fields(dir="ltr")
+									//- 		.form-time-fields__item
+									//- 			select#hour(name='hour', data-min="8", data-max="20")
+
+									//- 		.form-time-fields__sep :
 											
-											.form-time-fields__item
-												select#minute(name='minute')
+									//- 		.form-time-fields__item
+									//- 			select#minute(name='minute')
+
+								.form-landing__item.hide.js-select-date
+									.form-landing__label.d-md-block(style="top:-15px") בשעה
+
+									.form-time-fields
+										input(type="date", name="minut" value="30", placeholder="", maxlength="2", min="2024-05-13")
+										
+
 								
 								
 							.form-landing__bottom

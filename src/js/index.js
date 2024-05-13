@@ -51,7 +51,7 @@ document.addEventListener("DOMContentLoaded", () => {
 			let popup = document.querySelector('.js-popup');
 
 			popup.classList.remove('active');
-	}
+		}
 	});
 
 	//valid form
@@ -138,10 +138,12 @@ document.addEventListener("DOMContentLoaded", () => {
 					document.querySelector('.js-final-page').classList.add('active');
 				}else{
 					if(numStep == 4){
-						if(document.querySelector('.js-select-day').value == 'now'){
+						if(document.querySelector('.js-select-day').value == 'date'){
 							document.querySelector('.js-select-time').classList.add('hide');
+							document.querySelector('.js-select-date').classList.remove('hide');
 						}else{
 							document.querySelector('.js-select-time').classList.remove('hide');
+							document.querySelector('.js-select-date').classList.add('hide');
 						}
 					}
 
@@ -180,10 +182,75 @@ document.addEventListener("DOMContentLoaded", () => {
 	document.querySelector('.js-select-celebrate').onchange = function(e){
 		document.querySelector('.js-select-phrases').classList.add('active');
 		document.querySelector('.js-field-author').classList.remove('hide');
+
+		// count letters by textarea
+		document.querySelectorAll('.js-select-phrases-field textarea').forEach(function(textarea){
+			let countLetters =  textarea.value.length;
+			textarea.nextElementSibling.querySelector('.js-select-popup-count-cur').innerHTML = countLetters;
+		});
+
 		document.querySelectorAll('.js-landing-step[data-step="2"] .js-landing-input').forEach(function(input){
 			validForm(input);
 		});
 	}
+
+	//counting the number of characters when changing the textarea
+	document.querySelectorAll('.js-select-phrases-field textarea').forEach(function(textarea){
+		textarea.onkeyup = function () {
+			let countLetters =  textarea.value.length;
+			textarea.nextElementSibling.querySelector('.js-select-popup-count-cur').innerHTML = countLetters;
+		}
+	});
+
+	//move textarea next
+	document.querySelector('.js-select-popup-next').onclick =  function(e){
+		if (!document.querySelector(".js-select-popup-next").classList.contains('disable')) {
+			let activeTextarea = document.querySelector(".js-select-phrases-field.active");
+			let widthTextarea = activeTextarea.offsetWidth;
+			let activeNumTextarea = Number(activeTextarea.getAttribute('data-num'));
+			let nextNumTextarea = activeNumTextarea + 1;
+			let moveTextarea = -widthTextarea * activeNumTextarea;
+			let countTextarea = document.getElementsByClassName('js-select-phrases-field').length;
+
+			document.querySelector(".js-select-phrases-field.active").classList.remove('active');
+			document.querySelector(".js-select-phrases-field[data-num='"+nextNumTextarea+"']").classList.add('active');
+			activeTextarea.parentElement.style.right = moveTextarea+"px";
+
+			if(nextNumTextarea >= countTextarea){
+				document.querySelector(".js-select-popup-next").classList.add('disable');
+			}
+
+			if(nextNumTextarea > 1){
+				document.querySelector(".js-select-popup-prev").classList.remove('disable');
+			}
+		}
+	}
+
+	//move textarea prev
+	document.querySelector('.js-select-popup-prev').onclick =  function(e){
+		if (!document.querySelector(".js-select-popup-prev").classList.contains('disable')) {
+			let activeTextarea = document.querySelector(".js-select-phrases-field.active");
+			let widthTextarea = activeTextarea.offsetWidth;
+			let activeNumTextarea = Number(activeTextarea.getAttribute('data-num'));
+			let prevNumTextarea = activeNumTextarea - 1;
+			let moveTextarea = -widthTextarea * (prevNumTextarea - 1);
+			let countTextarea = document.getElementsByClassName('js-select-phrases-field').length;
+
+			document.querySelector(".js-select-phrases-field.active").classList.remove('active');
+			document.querySelector(".js-select-phrases-field[data-num='"+prevNumTextarea+"']").classList.add('active');
+			activeTextarea.parentElement.style.right = moveTextarea+"px";
+
+			if(prevNumTextarea == 1){
+				document.querySelector(".js-select-popup-prev").classList.add('disable');
+			}
+
+			if(prevNumTextarea < countTextarea){
+				document.querySelector(".js-select-popup-next").classList.remove('disable');
+			}
+		}
+	}
+
+	
 
 	//Validation of the form at the second step when changing the field value
 	document.querySelectorAll('.js-landing-step[data-step="2"] .js-landing-input').forEach(function(input){
@@ -271,58 +338,123 @@ document.addEventListener("DOMContentLoaded", () => {
 
 	// when choosing a day, we show the time
 	document.querySelector('.js-select-day').onchange = function(e){
-		if(e.target.value == 'now'){
+		if(e.target.value == 'date'){
 			document.querySelector('.js-select-time').classList.add('hide');
+			document.querySelector('.js-select-date').classList.remove('hide');
 		}else{
 			document.querySelector('.js-select-time').classList.remove('hide');
+			document.querySelector('.js-select-date').classList.add('hide');
 		}
 	}
 
-	// timepicker
-	// var hourStart = document.querySelector('.js-time-input').getAttribute('min');
-	// var hourFinish = document.querySelector('.js-time-input').getAttribute('max');
+	document.querySelectorAll('.js-select-phrases-field textarea').forEach(function(textarea){
+		textarea.onkeyup = function () {
+			let countLetters =  textarea.value.length;
+			textarea.nextElementSibling.querySelector('.js-select-popup-count-cur').innerHTML = countLetters;
+		}
+	});
+
+	// we limit the characters for the hours field
+	document.querySelector('.js-input-hour').addEventListener("input", function(e){
+		allowOnlyDigits(this);
+
+		if(this.value > 24){
+			this.value = 24;
+		}
+
+		if(this.value < 0){
+			this.value = 0;
+		}
+	});
+
+	// we limit the characters for the minutes field
+	document.querySelector('.js-input-minute').addEventListener("input", function(e){
+		allowOnlyDigits(this);
+
+		if(this.value > 59){
+			this.value = 59;
+		}
+
+		if(this.value < 0){
+			this.value = 0;
+		}
+	});
 	
-	// // const timeControl = document.querySelector('.js-time-input');
-	// // timeControl.value = hourStart;
+	function allowOnlyDigits(elem) {
+		if (elem.validity.valid) {
+			elem.setAttribute('current-value', elem.value.replace(/[^\d]/g, ""));
+		}
+		elem.value = elem.getAttribute('current-value');
+	}
 
-	// hourStart = parseInt(hourStart.substring(0, hourStart.length - 3));
-	// hourFinish = parseInt(hourFinish.substring(0, hourFinish.length - 3));
+	// // timepicker
+	// // var hourStart = document.querySelector('.js-time-input').getAttribute('min');
+	// // var hourFinish = document.querySelector('.js-time-input').getAttribute('max');
 	
-	const hourSelect = document.querySelector("#hour");
-	const minuteSelect = document.querySelector("#minute");
-	var hourStart =  parseInt(hourSelect.getAttribute('data-min'));
-	var hourFinish =  parseInt(hourSelect.getAttribute('data-max'));
+	// // // const timeControl = document.querySelector('.js-time-input');
+	// // // timeControl.value = hourStart;
 
-	// Dynamic filling of hours and minutes
-	populateHours();
-	populateMinutes();
+	// // hourStart = parseInt(hourStart.substring(0, hourStart.length - 3));
+	// // hourFinish = parseInt(hourFinish.substring(0, hourFinish.length - 3));
+	
+	// const hourSelect = document.querySelector("#hour");
+	// const minuteSelect = document.querySelector("#minute");
+	// var hourStart =  parseInt(hourSelect.getAttribute('data-min'));
+	// var hourFinish =  parseInt(hourSelect.getAttribute('data-max'));
 
-	function populateHours() {
-		// Filling in the <select> hours with the open hours of the day
-		for (let i = hourStart; i <= hourFinish; i++) {
-			const option = document.createElement("option");
-			option.textContent = i;
-			hourSelect.appendChild(option);
-		}
-	}
+	// // Dynamic filling of hours and minutes
+	// populateHours();
+	// populateMinutes();
 
-	function populateMinutes() {
-		// we fill the minutes with <select> 60 hours of each minute
-		for (let i = 0; i <= 59; i++) {
-			const option = document.createElement("option");
-			option.textContent = i < 10 ? `0${i}` : i;
-			minuteSelect.appendChild(option);
-		}
-	}
-
-	//сделаем так, чтобы если час 18, то значение минут устанавливалось на 00
-	// — нельзя выбрать время после 18:00
-	// function setMinutesToZero() {
-	// if (hourSelect.value === "18") {
-	// 	minuteSelect.value = "00";
-	// }
+	// function populateHours() {
+	// 	// Filling in the <select> hours with the open hours of the day
+	// 	for (let i = hourStart; i <= hourFinish; i++) {
+	// 		const option = document.createElement("option");
+	// 		option.textContent = i;
+	// 		hourSelect.appendChild(option);
+	// 	}
 	// }
 
-	// hourSelect.onchange = setMinutesToZero;
-	// minuteSelect.onchange = setMinutesToZero;
+	// function populateMinutes() {
+	// 	// we fill the minutes with <select> 60 hours of each minute
+	// 	for (let i = 0; i <= 59; i++) {
+	// 		const option = document.createElement("option");
+	// 		option.textContent = i < 10 ? `0${i}` : i;
+	// 		minuteSelect.appendChild(option);
+	// 	}
+	// }
+
+	// //сделаем так, чтобы если час 18, то значение минут устанавливалось на 00
+	// // — нельзя выбрать время после 18:00
+	// // function setMinutesToZero() {
+	// // if (hourSelect.value === "18") {
+	// // 	minuteSelect.value = "00";
+	// // }
+	// // }
+
+	// // hourSelect.onchange = setMinutesToZero;
+	// // minuteSelect.onchange = setMinutesToZero;
+
+	// //slider textarea
+
+	
+	// // console.log('111');
+	// // console.log('Textarea = ', document.querySelector(".js-select-phrases-field"));
+	// // console.log('widthTextarea = ', widthTextarea);
+
+	//Establece un límite riba e fecha selektá
+	var currentDate = new Date(new Date().getTime() + 24 * 60 * 60 * 1000);
+	var day = currentDate.getDate()
+	var month = currentDate.getMonth() + 1
+	var year = currentDate.getFullYear()
+
+	if(day < 10){
+		day = '0' + day;
+	}
+
+	if(month < 10){
+		month = '0' + month;
+	}
+
+	document.querySelector('.js-select-date input').setAttribute('min', year+'-'+month+'-'+day)
 });
